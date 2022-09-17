@@ -1,0 +1,35 @@
+<h2 class="content-subhead">Search</h2>
+
+<form action="/search" method="get">
+  <input name="query" value="<%= @word %>"/>
+  <button type="submit">Search</button>
+</form>
+
+<% unless @word.nil? || @word.empty? %>
+  <% if @chapters.empty? %>
+    <p>Sorry, no matches were found.</p>
+  <% else %>
+    <h2>Results for <%= @word %></h2>
+
+    <ul class="results-list">
+      <% @chapters.each do |chapter| %>
+      <li>
+        <h4><%= chapter[:name] %></h4>
+         <ul>
+           <% chapter[:paragraphs].each do |paragraph| %>
+             <li><a href="/chapters/<%= chapter[:number]%>">
+             <%= highlight_text(paragraph, @word) %></a></li>
+           <% end %> 
+         </ul>
+       </li>
+       <% end %>
+     </ul>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+
