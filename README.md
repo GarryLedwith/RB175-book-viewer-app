@@ -1,2 +1,2 @@
 # README # 
-E-book reader web application
+Dynamic E-book reader web application
